@@ -336,3 +336,4 @@ pip-selfcheck.json
 cookie/media/
 
 .pytest_cache/
+.idea/
