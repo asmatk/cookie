@@ -8,7 +8,7 @@ from django.urls import reverse
 
 
 class Post(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    author = models.ForeignKey('users.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=100, unique=True)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
@@ -27,7 +27,7 @@ class Post(models.Model):
 
 class Author(models.Model):
     name = models.CharField(max_length=200)
-    create_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    create_by = models.ForeignKey('users.User', on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('author-detail', kwargs={'pk': self.pk})

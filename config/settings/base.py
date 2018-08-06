@@ -1,12 +1,17 @@
 """
 Base settings to build other settings files upon.
+test
 """
 
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3  # (cookie/config/settings/base.py - 3 = cookie/)
+
+# APPS_DIR contains the path of the application ==> cookie/cookie
 APPS_DIR = ROOT_DIR.path('cookie')
 
+# import env variable
+# environ.Env() finds the file .env
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool('DJANGO_READ_DOT_ENV_FILE', default=True)
@@ -16,6 +21,7 @@ if READ_DOT_ENV_FILE:
     env.read_env(str(ROOT_DIR.path('.env')))
 
 # GENERAL
+# ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = env.bool('DJANGO_DEBUG', False)
@@ -73,6 +79,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'cookie.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
+    'cookie.blog.apps.BlogConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -221,7 +228,6 @@ ADMINS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
-
 # django-allauth
 # ------------------------------------------------------------------------------
 ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
@@ -235,7 +241,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_ADAPTER = 'cookie.users.adapters.AccountAdapter'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = 'cookie.users.adapters.SocialAccountAdapter'
-
 
 # Your stuff...
 # ------------------------------------------------------------------------------

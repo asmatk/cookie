@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.urls import path
 
-from blog.views import AuthorCreate, AuthorUpdate, AuthorDelete, GreetingView, ListPostView, NewPostView, EditPostView, DetailPostView
+from cookie.blog.views import AuthorCreate, AuthorUpdate, AuthorDelete, GreetingView, ListPostView, NewPostView, EditPostView, DetailPostView
 from . import views
 from django.conf.urls import url
 

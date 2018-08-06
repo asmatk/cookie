@@ -11,7 +11,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, View, 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy, reverse
-from blog.models import Author
+from cookie.blog.models import Author
 from django.contrib.auth.decorators import login_required
 
 
