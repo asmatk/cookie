@@ -8,15 +8,19 @@ from django.urls import reverse
 
 
 class Post(models.Model):
-    author = models.ForeignKey('users.User', on_delete=models.CASCADE)
+    author = models.ForeignKey('users.User', null=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=100, unique=True)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    creyt_d = models.DateTimeField(blank=True, null=True)
 
     def publish(self):
         self.published_date = timezone.now()
         self.save()
+
+    def get_absolute_url(self):
+        return reverse('author-detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.title

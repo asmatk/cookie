@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.urls import path
 
-from cookie.blog.views import AuthorCreate, AuthorUpdate, AuthorDelete, GreetingView, ListPostView, NewPostView, EditPostView, DetailPostView
+from cookie.blog.views import AuthorCreate, AuthorUpdate, AuthorDelete, GreetingView, ListPostView, NewPostView, \
+    EditPostView, DetailPostView
 from . import views
 from django.conf.urls import url
 
@@ -32,4 +33,6 @@ urlpatterns = [
     # path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
     path('post/<int:pk>/edit/', EditPostView.as_view(), name='post_edit'),
     path('post/new/', NewPostView.as_view(), name='post_new'),
+
+    # DRF
 ]
